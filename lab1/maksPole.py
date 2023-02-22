@@ -1,13 +1,16 @@
 from timeit import default_timer as timer
 
 def time(fn):
-    
-    def inner(n, M):
+    def inner(n, M, zlozonosc):
         start = timer()
-        print(fn(n, M))
+        print("Wynik:",fn(n, M))
         stop = timer()
-        print(stop-start)
+        Tn = stop-start
+        Fn = zlozonosc
+        print("Czas", Tn, Fn/Tn)
     return inner
+
+
 
 @time
 def NAIWNY(n, M):
@@ -30,7 +33,7 @@ def DYNAMICZNY(n, M):
     maks = 0
     #  utworz tablicę kwadratową MM rozmiaru n
     #  i wypełnij ją zerami
-    MM=[[0 for _ in range(n)] for _ in range(n)]
+    MM = [[0 for _ in range(n)] for _ in range(n)]
     for y in range(0, n):
         for x1 in range(0, n):
             iloczyn = 1
@@ -41,7 +44,7 @@ def DYNAMICZNY(n, M):
                     maks = MM[x1][x2]
     return maks
 
-
+@time
 def CZULY(n, M):
     maks = 0
     lokalMaks = 0
@@ -59,7 +62,19 @@ def CZULY(n, M):
                 if lokalMaks > maks:
                     maks = lokalMaks
                 x2 += 1
-    return max
+    return maks
 
 
-CZULY(3, [[1,1,1], [0,1,1], [0,1,0]])
+nn = [[2, [[1, 1], [0, 1]]], [3, [[1, 0, 0], [0, 1, 1], [0, 1, 0]]], [4, [[1, 1, 1, 1], [1, 1, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1]]]]
+zlozonosc_naiwny = 2**6
+zlozonosc_dynamiczny = 2**2+2**3
+zlozonosc_czuly = 2**4
+for n in nn:
+    print("\nNAIWNY\n")
+    NAIWNY(n[0], n[1], zlozonosc_naiwny)
+    print("-"*20)
+    print("\nDYNAMICZNY\n")
+    DYNAMICZNY(n[0], n[1], zlozonosc_dynamiczny)
+    print("-"*20)
+    print("\nCZULY\n")
+    CZULY(n[0], n[1], zlozonosc_czuly)
