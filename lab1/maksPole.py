@@ -76,6 +76,7 @@ nn = [[i, [[randint(0, 1) for _ in range(i)] for _ in range(i)]]
 nn.append([3, [[1, 1, 1], [1, 1, 1], [1, 1, 1]]])
 nn.append([3, [[0, 0, 0], [0, 0, 0], [0, 0, 0]]])
 
+
 for n in nn:
     print(f"n = {n[0]}, M = {n[1]}\n\n")
     print("\nNAIWNY\n")

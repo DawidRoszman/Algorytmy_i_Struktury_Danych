@@ -1,5 +1,6 @@
 import math
 from timeit import default_timer as timer
+import time_complexity_checker as tcc
 
 
 def f1(n):
@@ -46,16 +47,19 @@ def f5(n):
 
 nn = [2000, 4000, 8000, 16000, 32000]
 
-for n in nn:
-    start = timer()
-    f2(n)
-    stop = timer()
-    Tn = stop-start
-    Fn = math.log(n, 2)
-    print(n, Tn, Fn/Tn)
+# for n in nn:
+#     start = timer()
+#     f2(n)
+#     stop = timer()
+#     Tn = stop-start
+#     Fn = math.log(n, 2)
+#     print(n, Tn, Fn/Tn)
 
 # inne funkcje czasu:
 
+tcc.check_time_complexity([f2, f3, f4, f5],
+                          ["n", "math.log(n, 2)", "n", "n*100",
+                           "n*math.log(n, 2)", "n*n"], nn)
 
 
 ''' n*n
