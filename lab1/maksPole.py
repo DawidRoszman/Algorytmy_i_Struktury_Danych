@@ -1,15 +1,16 @@
 from timeit import default_timer as timer
+from random import randint
+
 
 def time(fn):
     def inner(n, M, zlozonosc):
         start = timer()
-        print("Wynik:",fn(n, M))
+        print("Wynik:", fn(n, M))
         stop = timer()
         Tn = stop-start
         Fn = zlozonosc
         print("Czas", Tn, Fn/Tn)
     return inner
-
 
 
 @time
@@ -28,6 +29,7 @@ def NAIWNY(n, M):
                         maks = lokalMaks
     return maks
 
+
 @time
 def DYNAMICZNY(n, M):
     maks = 0
@@ -43,6 +45,7 @@ def DYNAMICZNY(n, M):
                 if MM[x1][x2] > maks:
                     maks = MM[x1][x2]
     return maks
+
 
 @time
 def CZULY(n, M):
@@ -65,11 +68,16 @@ def CZULY(n, M):
     return maks
 
 
-nn = [[2, [[1, 1], [0, 1]]], [3, [[1, 0, 0], [0, 1, 1], [0, 1, 0]]], [4, [[1, 1, 1, 1], [1, 1, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1]]]]
 zlozonosc_naiwny = 2**6
-zlozonosc_dynamiczny = 2**2+2**3
+zlozonosc_dynamiczny = 2**3
 zlozonosc_czuly = 2**4
+nn = [[i, [[randint(0, 1) for _ in range(i)] for _ in range(i)]]
+      for i in range(2, 16)]
+nn.append([3, [[1, 1, 1], [1, 1, 1], [1, 1, 1]]])
+nn.append([3, [[0, 0, 0], [0, 0, 0], [0, 0, 0]]])
+
 for n in nn:
+    print(f"n = {n[0]}, M = {n[1]}\n\n")
     print("\nNAIWNY\n")
     NAIWNY(n[0], n[1], zlozonosc_naiwny)
     print("-"*20)
@@ -78,3 +86,6 @@ for n in nn:
     print("-"*20)
     print("\nCZULY\n")
     CZULY(n[0], n[1], zlozonosc_czuly)
+    print("\n\n")
+    print("-"*20)
+    print("\n\n")
