@@ -58,7 +58,7 @@ nn = [2000, 4000, 8000, 16000, 32000]
 # inne funkcje czasu:
 
 tcc.check_time_complexity([f2, f3, f4, f5],
-                          ["n", "math.log(n, 2)", "n", "n*100",
+                          ["math.log(n, 2)", "n", "n*100",
                            "n*math.log(n, 2)", "n*n"], nn)
 
 
