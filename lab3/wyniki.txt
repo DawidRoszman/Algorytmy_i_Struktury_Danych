@@ -1,0 +1,67 @@
+Modified quick sort time: 0.01923940000051516
+Quick sort time: 3.696242899999561
+
+
+------------------------
+
+Modified quick sort time: 0.01960959999996703
+Quick sort time: 3.6599546999996164
+
+
+------------------------
+
+Modified quick sort time: 0.020363000000543252
+Quick sort time: 3.6416252999997596
+
+
+------------------------
+
+Modified quick sort time: 0.020152900000539375
+Quick sort time: 3.625105000000076
+
+
+------------------------
+
+Modified quick sort time: 0.02240940000046976
+Quick sort time: 3.642974299999878
+
+
+------------------------
+
+Modified quick sort time: 0.021284000000378
+Quick sort time: 3.658923899999536
+
+
+------------------------
+
+Modified quick sort time: 0.01946829999997135
+Quick sort time: 3.6684894999998505
+
+
+------------------------
+
+Modified quick sort time: 0.022520999999869673
+Quick sort time: 3.67515320000075
+
+
+------------------------
+
+Modified quick sort time: 0.019080299999586714
+Quick sort time: 3.7406899999996313
+
+
+------------------------
+
+Modified quick sort time: 0.030515399999785586
+Quick sort time: 3.648019100000056
+
+
+------------------------
+
+Worst case scenario
+Modified quick sort time: 3.585195300000123
+Quick sort time: 3.5552856000003885
+
+
+------------------------
+
