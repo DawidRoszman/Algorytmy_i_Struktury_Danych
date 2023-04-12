@@ -1,5 +1,3 @@
-import random
-
 # Funkcje haszujące
 
 # Funkcja haszująca wbudowana w Pythonie
@@ -53,6 +51,8 @@ def test_hashing(variant, m, keys):
             i = hash_d(k, m)
         elif variant == 'S':
             i = hash_s(k, m)
+        else:
+            raise ValueError(f'Unknown variant: {variant}')
         T[i].append(k)
 
     print(f'Variant {variant}{m}:')
@@ -68,7 +68,6 @@ with open('3700.txt', 'r') as f:
     keys = f.read().splitlines()
 
 # Testowanie dla wszystkich wariantów
-for m in [17, 1031, 1024]:
+for m in [17, 1024, 1031]:
     for variant in ['W', 'D', 'S']:
         test_hashing(variant, m, keys)
-
