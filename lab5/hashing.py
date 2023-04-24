@@ -23,7 +23,8 @@ def hash_s(k, m):
     return ord(k[0]) % m
 
 
-# Pomiar ilości pustych list, maksymalnej i średniej długości niepustych list w tablicy T
+# Pomiar ilości pustych list, maksymalnej i
+# średniej długości niepustych list w tablicy T
 def measure(T):
     empty_lists = 0
     max_length = 0
