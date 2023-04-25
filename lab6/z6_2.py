@@ -1,14 +1,20 @@
 import random
 # S + OK
 
+# def hash_d(k, m):
+#     value = 0
+#     a = 111
+#     for char in k:
+#         value = value * a + ord(char)
+#     return value % m
+
+
 def hash_d(k, m):
-    value = 0
+    value = 1
     a = 111
-    for char in k.name:
-        value = value * a + ord(char)
+    for i in range(1, len(k)):
+        value = value * (a+ ord(k[i - 1]) + ord(k[i]))
     return value % m
-
-
 
 class Obj:
     def __init__(self, number, name):
@@ -46,7 +52,7 @@ hash_table = [None] * table_size
 def hash_insert(key, hash_table):
     i = 0
     while i < len(hash_table):
-        j = (h(key, i) + i*i) % len(hash_table)
+        j = (h(key.name, i) + i*i) % len(hash_table)
         if hash_table[j] is None:
             hash_table[j] = key
             return j
@@ -58,13 +64,15 @@ def hash_insert(key, hash_table):
 def hash_search(key, hash_table):
     i = 0
     while i < len(hash_table):
-        print("Próba nr: ", i)
-        j = (h(key, i) + i*i) % len(hash_table)
+        j = (h(key.name, i) + i*i) % len(hash_table)
         if hash_table[j] is None:
+            print("Liczba prób:", i)
             return None
         if hash_table[j] == key:
+            print("Liczba prób:", i)
             return j
         i += 1
+    print("Liczba prób:", i)
     return None
 
 
