@@ -1,9 +1,13 @@
 import random
 # S + OK
 
+def hash_d(k, m):
+    value = 0
+    a = 111
+    for char in k.name:
+        value = value * a + ord(char)
+    return value % m
 
-def hash_w(k, m):
-    return hash(k) % m
 
 
 class Obj:
@@ -31,7 +35,7 @@ with open("./pierwsze.txt") as file:
 first100 = names[:100]
 
 
-def h(k, i): return (hash_w(k, i+1) + 25*i + 11*(i**2))
+def h(k, i): return (hash_d(k, i+1) + 25*i + 11*(i**2))
 
 
 # Open hashing with cubic probing
