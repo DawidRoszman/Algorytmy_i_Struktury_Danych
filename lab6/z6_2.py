@@ -1,13 +1,13 @@
 # S + OK
 
 
-def hash_d(k, m):
-    value = 0
-    a = 111
-    for char in k:
-        value = value * a + ord(char)
-    return value % m
-
+# def hash_d(k, m):
+#     value = 0
+#     a = 111
+#     for char in k:
+#         value = value * a + ord(char)
+#     return value % m
+#
 
 # def hash_d(k, m):
 #     value = 1
@@ -16,8 +16,8 @@ def hash_d(k, m):
 #         value = value * (a+ ord(k[i - 1]) + ord(k[i]))
 #     return value % m
 
-# def hash_d(k):
-#     return hash(k)
+def hash_d(k, m):
+    return hash(k) % m
 
 class Obj:
     def __init__(self, number, name):
@@ -41,14 +41,14 @@ with open("./pierwsze.txt") as file:
             if num != '':
                 stripped.append(int(num.strip()))
 
-first100 = names[:100]
+first100 = names[:29]
 
 
 def h(k, i, m): return (hash_d(k, m) + i**2)
 
 
 # Open hashing with cubic probing
-table_size = 287
+table_size = 37
 hash_table = [None] * table_size
 
 
@@ -71,8 +71,7 @@ def hash_search(key, hash_table):
         if hash_table[j] is None:
             return None
         if hash_table[j] == key:
-            print("Liczba prób:", i+1)
-            return j
+            return (j, i+1)
         i += 1
     return None
 
@@ -97,5 +96,9 @@ for name in names:
     hash_insert(name, hash_table2)
 
 # search last 20 names
-for i in range(20):
-    print(hash_search(names[-i], hash_table2))
+last20 = [hash_search(names[-i], hash_table2) for i in range(21)]
+last20i = [x[1] for x in last20]
+for x in last20:
+    print(x)
+print(" --- AVG --- ")
+print(sum(last20i)/len(last20))
