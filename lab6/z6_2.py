@@ -1,12 +1,12 @@
-import random
 # S + OK
 
-def hash_d(k):
+
+def hash_d(k, m):
     value = 0
     a = 111
     for char in k:
         value = value * a + ord(char)
-    return value
+    return value % m
 
 
 # def hash_d(k, m):
@@ -44,20 +44,20 @@ with open("./pierwsze.txt") as file:
 first100 = names[:100]
 
 
-def h(k, i): return (hash_d(k) + 25*i + 25*(i**2))
+def h(k, i, m): return (hash_d(k, m) + i**2)
 
 
 # Open hashing with cubic probing
-table_size = 151
+table_size = 287
 hash_table = [None] * table_size
 
 
 def hash_insert(key, hash_table):
     i = 0
     while i < len(hash_table):
-        j = (h(key.name, i) % len(hash_table)) 
+        j = (h(key.name, i, len(hash_table)) % len(hash_table))
         if hash_table[j] is None:
-            hash_table[j] = key.name
+            hash_table[j] = key
             return j
         i += 1
     print("Hash table is full")
@@ -67,28 +67,27 @@ def hash_insert(key, hash_table):
 def hash_search(key, hash_table):
     i = 0
     while i < len(hash_table):
-        j = (h(key.name, i) % len(hash_table))
+        j = (h(key.name, i, len(hash_table)) % len(hash_table))
         if hash_table[j] is None:
-            print("Liczba prób:", i)
             return None
         if hash_table[j] == key:
-            print("Liczba prób:", i)
+            print("Liczba prób:", i+1)
             return j
         i += 1
-    print("Liczba prób:", i)
     return None
+
 
 for name in first100:
     hash_insert(name, hash_table)
-
+print(" --- TEST --- ")
+print(" --- HASH TABLE --- ")
+print(hash_table)
+print(" --- SEARCH --- ")
 for i in range(20):
     print(hash_search(first100[i], hash_table))
 
-print(hash_table)
-
-
-# print(hash_table)
-
+print(" --- BIG TABLE --- ")
+print(" --- HASH TABLE --- ")
 
 # test for bigger table couple of thousands
 size_of_table2 = 25733
