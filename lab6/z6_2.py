@@ -1,6 +1,5 @@
 # S + OK
 
-
 # def hash_d(k, m):
 #     value = 0
 #     a = 111
