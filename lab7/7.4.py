@@ -106,7 +106,7 @@ class BST:
             return
 
         self.BSTinOrderDTo(x.left, d + 1, to)
-        print(f"Depth {d}: {x.key}")
+        print(f"{d*'    '}Depth {d}: {x.key}")
         self.BSTinOrderDTo(x.right, d + 1, to)
 
     def BSTfindDepth(self, x, d=0):
@@ -132,50 +132,50 @@ class BST:
 
 # print(skins)
 
-# print("=============== Przykładowe drzewo ===============")
-# tree = BST()
-# node1 = Node("1")
-# node2 = Node("2")
-# node3 = Node("3")
-# node4 = Node("4")
-# node5 = Node("5")
-# node6 = Node("6")
-# node7 = Node("7")
-# node8 = Node("8")
-# node9 = Node("9")
-# nodes = [node1, node2, node3, node4, node5, node6, node7, node8, node9]
+print("=============== Przykładowe drzewo ===============")
+tree = BST()
+node1 = Node("6")
+node2 = Node("4")
+node3 = Node("8")
+node4 = Node("2")
+node5 = Node("9")
+node6 = Node("1")
+node7 = Node("5")
+node8 = Node("3")
+node9 = Node("7")
+nodes = [node1, node2, node3, node4, node5, node6, node7, node8, node9]
 
-# # Wstawiamy node'y
-# for node in nodes:
-#     tree.BSTinsert(node)
+# Wstawiamy node'y
+for node in nodes:
+    tree.BSTinsert(node)
 
 
-# print("========== Szukanie ==========")
-# print(tree.BSTsearchR(tree.root, "kota"))
-# print(tree.BSTsearchR(tree.root, "kotami"))
-#
-#
-# print("========== Wypisywanie ==========")
-# tree.BSTinOrderD(tree.root, 0)
-# tree.BSTinOrder(tree.root)
-# tree.BSTinOrderDTo(tree.root, 0, 3)
-#
-# print("========== Wypisywanie ==========")
-# print("----- Wypisujemy przed usunięciem -----")
-# tree.BSTinOrderD(tree.root, 0)
-# print("----- Usuwamy 'jabłoń' i szukamy go w drzewie -----")
-# tree.BSTDelete(node6)
-# print(tree.BSTsearchR(tree.root, "jabłoń"))
-# print("----- Wypisujemy po usunięciu -----")
-# tree.BSTinOrderD(tree.root, 0)
+print("========== Szukanie ==========")
+print(tree.BSTsearchR(tree.root, "1"))
+print(tree.BSTsearchR(tree.root, "5"))
 
-# print("========== Głębokość ==========")
-# print(tree.BSTfindDepth(tree.root))
-# root_tree = BST()
-# root_node = Node("root")
-# root_tree.BSTinsert(root_node)
-# print("--- test dla drzewa z samym korzeniem ---")
-# print(tree.BSTfindDepth(root_tree.root))
+
+print("========== Wypisywanie ==========")
+tree.BSTinOrderD(tree.root, 0)
+tree.BSTinOrder(tree.root)
+tree.BSTinOrderDTo(tree.root, 0, 3)
+
+print("========== Wypisywanie ==========")
+print("----- Wypisujemy przed usunięciem -----")
+tree.BSTinOrderD(tree.root, 0)
+print("----- Usuwamy '8' i szukamy go w drzewie -----")
+tree.BSTDelete(node3)
+print(tree.BSTsearchR(tree.root, "8"))
+print("----- Wypisujemy po usunięciu -----")
+tree.BSTinOrderD(tree.root, 0)
+
+print("========== Głębokość ==========")
+print(tree.BSTfindDepth(tree.root))
+root_tree = BST()
+root_node = Node("root")
+root_tree.BSTinsert(root_node)
+print("--- test dla drzewa z samym korzeniem ---")
+print(tree.BSTfindDepth(root_tree.root))
 
 with open('10k-most-common.txt', 'r', encoding="utf-8") as file:
     content = file.readlines()
